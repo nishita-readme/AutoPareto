@@ -11,10 +11,7 @@ Raw Counts (query + reference)
         │
         ▼
 [Stage 1 — R]  01_transfer_annotation.R
-        │  Load GSE115746 VISp reference
         │  Seurat anchor-based label transfer
-        │  Export annotated query → .h5ad
-        │
         ▼
 [Stage 2 — Python]  notebooks/tutorial.ipynb
         │  QC checks
@@ -61,7 +58,7 @@ BiocManager::install("glmGamPoi")   # optional but recommended for SCT
 
 ### Python (Stage 2)
 ```bash
-conda env create -f environment/environment.yml
+conda env create -f environment/environment_py.yml
 conda activate parti
 # or manually:
 pip install scanpy partipy gseapy anndata pandas numpy matplotlib scipy
@@ -73,90 +70,52 @@ pip install scanpy partipy gseapy anndata pandas numpy matplotlib scipy
 
 **Script:** `scripts/01_transfer_annotation.R`
 
-This script loads the [GSE115746](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE115746) mouse visual cortex reference dataset, subsets it to the Primary Visual Cortex (VISp), and uses **Seurat's anchor-based transfer** to annotate cell subclasses in your query dataset.
+This script requires a reference dataset with metadata that you would like to annotate your query dataset with. It uses **Seurat's anchor-based transfer** to annotate cell subclasses in your query dataset.
 
-### Required reference files
-
-Download and place in `data/ref/raw/`:
-- `GSE115746_controls_exon_counts.csv.gz`
-- `GSE115746_complete_metadata_28706-cells.csv.gz`
-
-### Usage
-
-```bash
-# Minimal — uses default reference paths
-Rscript scripts/01_transfer_annotation.R --query data/raw/query.rds
-
-# Full options
-Rscript scripts/01_transfer_annotation.R \
-  --query        data/raw/query.rds \
-  --counts       data/ref/raw/GSE115746_controls_exon_counts.csv.gz \
-  --meta         data/ref/raw/GSE115746_complete_metadata_28706-cells.csv.gz \
-  --output       data/processed/query_annotated.h5ad \
-  --normalization LogNormalize \   # or SCT
-  --ndims        30 \
-  --nfeatures    2000 \
-  --k_weight     50 \
-  --confidence_threshold 0.5
-```
-
-### Key parameters
-
-| Parameter | Default | Description |
-|---|---|---|
-| `--query` | required | Path to query `.rds` Seurat object |
-| `--normalization` | `LogNormalize` | `LogNormalize` or `SCT` |
-| `--ndims` | `30` | Number of PCA dims for anchoring |
-| `--nfeatures` | `2000` | Number of variable features |
-| `--k_weight` | `50` | k.weight for TransferData (auto-reduces if too large) |
-| `--confidence_threshold` | `0.5` | Min prediction score for confident calls |
-| `--save_rds` | `FALSE` | Also save annotated query as `.rds` |
-| `--save_ref_rds` | `FALSE` | Save processed reference as `.rds` |
+### Tutorial
 
 ### R utility functions (`utils_R.R`)
 
-These functions can also be used interactively in an R session:
+These functions can used interactively in an R session:
 
 ```r
 source("scripts/utils_R.R")
 
-# Load counts + metadata into a Seurat object
-seu <- load_seurat(
-  counts_path = "data/ref/raw/GSE115746_controls_exon_counts.csv.gz",
-  meta_path   = "data/ref/raw/GSE115746_complete_metadata_28706-cells.csv.gz",
-  project     = "GSE115746"
+# Load counts + metadata of reference dataset into a Seurat object
+seu_ref <- load_seurat(
+  counts_path = "path/to/ref_counts.csv.gz",
+  meta_path   = "path/to/ref_metadata.csv.gz"
 )
 
-# QC plots — returns seu with pct.mt and pct.ribo added
-seu <- plot_qc(seu, mt_pattern = "^mt-", ribo_pattern = "^Rp[sl]", group_by = "orig.ident")
+# Load counts + metadata of your (query) dataset into a Seurat object
+seu_query <- load_seurat(
+  counts_path = "path/to/query_counts.csv.gz",
+  meta_path   = "path/to/query_metadata.csv.gz"
+)
+
+# QC plots — returns seu with pct.mt and pct.ribo added. Note that the case of mt and Rp changes based on species and dataset versions.
+seu_query <- plot_qc(seu_query, mt_pattern = "^mt-", ribo_pattern = "^Rp[sl]")
 
 # Filter after inspecting plots
-seu <- subset(seu, nFeature_RNA > 500 & nFeature_RNA < 6000 & pct.mt < 15)
+seu_query <- subset(seu_query, nFeature_RNA > 500 & nFeature_RNA < 6000 & pct.mt < 15)
 
 # Preprocess + transfer annotations
-query <- preprocess_and_run_transferanchor(
-  query           = query,
-  reference       = ref,
+seu_query <- preprocess_and_run_transferanchor(
+  query           = seu_query,
+  reference       = seu_ref,
   normalization   = "lognorm",   # or "SCT"
   ref_label_col   = "cell_subclass",
   query_label_col = "predicted_subclass",
   dims            = 1:30
 )
 
-# Export to .h5ad for Python
-convert_to_h5ad(query, "data/processed/query_annotated.h5ad")
+# Export to counts and metadata file for Python
+write_counts_metadata(seu_query, "data/processed/query_counts.csv", "data/processed/query_metadata.csv")
 ```
 
 ### Output
 
-The script writes an `.h5ad` file to `data/processed/` with the following metadata columns added to cells:
-
-| Column | Description |
-|---|---|
-| `transferred_subclass` | Predicted cell subclass label |
-| `transfer_score` | Maximum prediction score (confidence) |
-| `transfer_confident` | Boolean — score ≥ confidence threshold |
-| `prediction.score.*` | Per-class prediction scores |
+The script writes a metadata with the annotation columns added to the cells
 
 ---
 
@@ -173,8 +132,8 @@ import sys
 sys.path.append("..")
 from scripts.utils import *
 
-counts = pd.read_csv("../data/processed/output_counts.csv", index_col=0)
-meta   = pd.read_csv("../data/processed/output_metadata.csv", index_col=0)
+counts = pd.read_csv("../data/processed/query_counts.csv", index_col=0)
+meta   = pd.read_csv("../data/processed/query_metadata.csv", index_col=0)
 adata  = sc.AnnData(X=counts.T, obs=meta)
 ```
 
@@ -187,11 +146,31 @@ check_raw_integers_in_adataX(adata)
 # Expected: 'adata.X contains only integers ✅'
 ```
 
-### 3. Preprocessing
+
+
+## Gene exclusion list for PCA
+
+Genes to optionally exclude before PCA — they can drive PCs for technical
+or biological reasons unrelated to cell identity:
+
+- **Mitochondrial genes** — high MT expression flags low-quality cells;
+  residual stressed cells can dominate early PCs (`MT-` / `mt-` prefix)
+- **Ribosomal protein genes** — vary with sequencing depth and cell size
+  rather than cell type (`RPS*`, `RPL*`)
+- **Sex-chromosome genes** — donor sex drives a PC in mixed-sex cohorts
+  (e.g. `XIST`, `DDX3Y`, `UTY`, `KDM5D`)
+- **Study-specific genes** — batch outliers, dissociation-stress genes
+  (`JUN`, `FOS`), haemoglobin genes (`HBA1`, `HBB`) from RBC contamination,
+  or any gene flagged during QC
 
 ```python
 QC_genes = pd.read_csv("../data/accessories/QC_genes.txt", sep="\t").iloc[:, 0].tolist()
 
+```
+### 3. Preprocessing
+This performs: normalization → log1p → HVG selection → gene exclusion → z-score scaling (stored in `adata.layers["z_scaled"]`) → PCA.
+
+```python
 preprocess_adata(
     adata,
     exclude_quality_genes = True,
@@ -201,7 +180,6 @@ preprocess_adata(
 )
 ```
 
-This performs: normalization → log1p → HVG selection → gene exclusion → z-score scaling (stored in `adata.layers["z_scaled"]`) → PCA.
 
 Optionally apply Harmony batch correction:
 ```python
@@ -230,8 +208,20 @@ The plot shows variance explained per PC for real vs. shuffled data. Use PCs up 
 In this dataset, ~8–10 PCs are informative (`n_dims = 8`).
 
 ### 6. Archetypal Analysis — select number of archetypes
+## Compute Archetype Selection Metrics (ParTI-py)
 
-First compute selection metrics across a range of k:
+Now we use **ParTI-py** to compute archetype selection metrics across a range of archetype numbers (`k`).
+
+### What This Step Does
+
+1. **Sets the PCA embedding** for ParTI-py using the first `n_dims` PCs
+2. **Computes selection metrics** for a range of `k` values (number of archetypes)
+   - Metrics help decide the **optimal number of archetypes** to use downstream
+
+
+- Make sure you've already decided on the **number of PCs (`n_dims`)** to use (see previous cell).
+- The selection metrics (e.g., explained variance, residual sum of squares) will be stored in `adata` for downstream visualization.
+- After running this, plot the metrics to identify the optimal `k` where adding more archetypes yields diminishing returns.
 
 ```python
 n_dims = 8
@@ -239,7 +229,9 @@ pt.set_obsm(adata, obsm_key="X_pca", n_dimensions=n_dims)
 pt.compute_selection_metrics(adata, n_archetypes_list=list(range(2, 8)))
 ```
 
-Then visualize all diagnostics at once:
+## Archetype Number Selection (Diagnostics)
+
+Before choosing a final number of archetypes, generate diagnostic plots to evaluate **stability**, **variance explained**, and **statistical significance** across multiple candidate values of optimal number of archetypes:
 
 ```python
 plots_for_n_archetypes_selection(adata, n_archetype_range=range(3, 8), color="CellType")
@@ -247,7 +239,7 @@ plots_for_n_archetypes_selection(adata, n_archetype_range=range(3, 8), color="Ce
 
 This produces:
 
-**Variance explained** — look for the elbow where gains diminish:
+**Variance explained** — look for the elbow where gains diminish. This might be difficult for data with more continuous variation than that with discrete clusters:
 
 ![Variance explained](assets/figures/output_22_1.png)
 
@@ -271,9 +263,10 @@ This produces:
 ![k=6](assets/figures/output_22_17.png)
 ![k=7](assets/figures/output_22_19.png)
 
-Based on IC minimum at k=3 and T-ratio significance at k=7, choose `n_archetypes = 3` as the most parsimonious solution.
+The decision-making here is subjective. For the sake of this tutorial, we went ahead with `n_archetypes = 3` as the most parsimonious solution.
 
-### 7. Assign top cells to archetypes
+### 7. Assign top n closest cells to archetypes
+Identify the `top_n` cells closest to each archetype in PCA space and store the assignment in `adata.obs["archetype"]`.
 
 ```python
 n_archetypes = 3
@@ -287,6 +280,9 @@ plot_top_cells_per_archetype(adata, dims=(0, 1))
 Each archetype occupies a distinct corner of PC space, consistent with the simplex structure.
 
 ### 8. Differential expression
+Once cells have been assigned to their dominant archetype, run a **1-vs-rest differential expression analysis** to identify the marker genes that define each archetype.
+
+**Prerequisites:** adata.obs must contain an "archetype" column (run get_top_cells_per_archetype first). Cells assigned 0 are treated as unassigned and excluded.
 
 **1-vs-rest DEG** per archetype (Wilcoxon, all genes):
 ```python
@@ -295,33 +291,38 @@ deg_dict[1].head(20)
 ```
 
 **Pairwise DEG** (every archetype vs every other):
+While 1-vs-rest DEG analysis identifies broad markers for each archetype, **pairwise comparisons** reveal genes that specifically distinguish one archetype from another — useful for understanding fine-grained biological differences between closely related archetypes.
+
 ```python
 pairwise_deg_dict = run_pairwise_deg_per_archetype(adata, lfc_threshold=1.0, pval_threshold=0.05)
 ```
 
 **Strict marker genes** (intersection of 1-vs-rest AND all pairwise comparisons):
+After running both 1-vs-rest and pairwise DEG analyses, intersect the results to obtain a **strict set of marker genes** for each archetype — genes that are not just generally distinctive, but specifically upregulated against **every** other archetype.
 ```python
 strict_genes_df = get_strict_archetype_genes(deg_dict, pairwise_deg_dict)
 strict_genes_df.head(20)
 ```
 
 ### 9. GO enrichment
+At this point, we have identified **marker genes for each archetype** — genes that are 
+differentially expressed in one archetype relative to all others. But a list of gene names 
+doesn't tell us much on its own. To interpret *what each archetype is doing biologically*, 
+we map these marker genes onto known gene ontology (GO) terms.
 
+We use **Enrichr** (via `gseapy`) to test whether our marker genes are statistically 
+overrepresented in any biological processes, molecular functions, or cellular components 
+relative to what we'd expect by chance. Critically, we set the **background to all genes 
+detected in our dataset** — not the entire genome — because we can only have detected 
+enrichment for genes we actually measured.
+
+A significant GO term tells us that an archetype is not just defined by random genes, 
+but by genes that share a coherent biological role. This is how we go from 
+*"archetype 2 exists"* to *"archetype 2 represents cells engaged in synaptic transmission"*.
 **ORA (over-representation analysis)** using Enrichr with dataset-wide background:
 ```python
 go_results = run_go_analysis(deg_dict, adata, organism="mouse", n_top_genes=200)
 go_results[1][["Gene_set", "Term", "Overlap", "Adjusted P-value", "Genes"]].head(20)
-```
-
-**Strict ORA** — intersect strict genes with 1-vs-rest before testing:
-```python
-strict_go_results = run_strict_go_analysis(strict_genes_df, deg_dict, adata, organism="mouse")
-```
-
-**GSEA (preranked)** — uses signal-to-noise ratio across all genes, no separate DEG step:
-```python
-gsea_results = run_gsea_per_archetype(adata, organism="mouse")
-gsea_results[1].head(20)
 ```
 
 ---
