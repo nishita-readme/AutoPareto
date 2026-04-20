@@ -1,6 +1,6 @@
 # AutoPareto
 
-A two-stage single-cell RNA-seq analysis pipeline for transferring cell type annotations from a reference atlas and performing **Archetypal Analysis (AA)** to identify extreme gene expression programs within a population.
+A two-stage single-cell RNA-seq analysis pipeline for transferring cell type annotations from a reference atlas and performing **Archetypal Analysis ** to identify extreme gene expression programs within a population.
 
 ---
 
