@@ -28,13 +28,7 @@ Raw Counts (query + reference)
 ## Repository Structure
 
 ```
-Parti_pipeline/
-├── data/
-│   ├── accessories/        # Accessory files (e.g. QC_genes.txt — gene exclusion list)
-│   ├── processed/          # Output from Stage 1 (counts CSV, metadata CSV, .h5ad)
-│   ├── ref/
-│   │   └── raw/            # Reference data: counts + metadata (.csv.gz)
-│   └── test/               
+Parti_pipeline/           
 ├── environment/            # Conda/pip environment files
 ├── notebooks/
 │   └── tutorial_stage1.R          # R Commands for annotation transfer
