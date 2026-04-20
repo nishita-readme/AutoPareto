@@ -75,6 +75,7 @@ source("scripts/utils_R.R")
 ```
 
 #### 1. Load reference and query
+Reference dataset should contain the metadata column that you intend to use to annotate your (query) dataset.
 
 ```r
 ref <- load_seurat(
