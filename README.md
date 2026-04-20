@@ -287,7 +287,6 @@ Once cells have been assigned to their dominant archetype, run a **1-vs-rest dif
 **1-vs-rest DEG** per archetype (Wilcoxon, all genes):
 ```python
 deg_dict = run_deg_per_archetype(adata, lfc_threshold=1.0, pval_threshold=0.05)
-deg_dict[1].head(20)
 ```
 
 **Pairwise DEG** (every archetype vs every other):
@@ -301,7 +300,6 @@ pairwise_deg_dict = run_pairwise_deg_per_archetype(adata, lfc_threshold=1.0, pva
 After running both 1-vs-rest and pairwise DEG analyses, intersect the results to obtain a **strict set of marker genes** for each archetype — genes that are not just generally distinctive, but specifically upregulated against **every** other archetype.
 ```python
 strict_genes_df = get_strict_archetype_genes(deg_dict, pairwise_deg_dict)
-strict_genes_df.head(20)
 ```
 
 ### 9. GO enrichment
@@ -322,7 +320,11 @@ but by genes that share a coherent biological role. This is how we go from
 **ORA (over-representation analysis)** using Enrichr with dataset-wide background:
 ```python
 go_results = run_go_analysis(deg_dict, adata, organism="mouse", n_top_genes=200)
-go_results[1][["Gene_set", "Term", "Overlap", "Adjusted P-value", "Genes"]].head(20)
+
+```
+## Optionally, you may also run a GO analysis with "strict" archetype gene list
+```python
+strict_go_results = run_strict_go_analysis(strict_genes_df, adata, organism="mouse")
 ```
 
 ---
