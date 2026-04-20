@@ -1,4 +1,4 @@
-# Parti Pipeline
+# AutoPareto
 
 A two-stage single-cell RNA-seq analysis pipeline for transferring cell type annotations from a reference atlas and performing **Archetypal Analysis (AA)** to identify extreme gene expression programs within a population.
 
