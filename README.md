@@ -37,7 +37,8 @@ Parti_pipeline/
 │   └── test/               
 ├── environment/            # Conda/pip environment files
 ├── notebooks/
-│   └── tutorial.ipynb      # Main analysis notebook (Stage 2)
+│   └── tutorial_stage1.R          # R Commands for annotation transfer
+|   ├── tutorial_stage2.ipynb      # Main python analysis notebook (Stage 2)
 ├── results/                # Final outputs: DEG tables, GO results, figures
 ├── scripts/
 │   ├── utils_R.R                  # R utility functions (load_seurat, plot_qc, preprocess_and_run_transferanchor(etc.)
