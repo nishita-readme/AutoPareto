@@ -33,7 +33,6 @@ Parti_pipeline/
 ├── notebooks/
 │   └── tutorial_stage1.R          # R Commands for annotation transfer
 |   ├── tutorial_stage2.ipynb      # Main python analysis notebook (Stage 2)
-├── results/                # Final outputs: DEG tables, GO results, figures
 ├── scripts/
 │   ├── utils_R.R                  # R utility functions (load_seurat, plot_qc, preprocess_and_run_transferanchor(etc.)
 │   └── utils.py                   # Python utility functions (AA, DEG, GO, etc.)
@@ -360,4 +359,3 @@ strict_go_results = run_strict_go_analysis(strict_genes_df, adata, organism="mou
 - All intermediate Python utility functions live in `scripts/utils.py`. Import with `from scripts.utils import *` from the notebooks directory.
 - All R utility functions live in `scripts/utils_R.R`. Source with `source("scripts/utils_R.R")`.
 - `data/accessories/QC_genes.txt` — tab-separated file, first column is gene names to exclude from HVG selection (mitochondrial, ribosomal, sex-linked, etc.).
-- Results (DEG tables, GO outputs, figures) should be written to `results/`.
