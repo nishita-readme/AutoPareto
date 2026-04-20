@@ -63,7 +63,7 @@ BiocManager::install(c(
 
 ### Python (Stage 2)
 ```bash
-conda env create -f environment/environment_py.yml
+conda env create -f environment/environment.yml
 conda activate parti
 # or manually:
 pip install scanpy partipy gseapy anndata pandas numpy matplotlib scipy
