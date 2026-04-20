@@ -10,7 +10,7 @@ A two-stage single-cell RNA-seq analysis pipeline for transferring cell type ann
 Raw Counts (query + reference)
         │
         ▼
-[Stage 1 — R]  01_transfer_annotation.R
+[Stage 1 — R] 
         │  Seurat anchor-based label transfer
         ▼
 [Stage 2 — Python]  notebooks/tutorial.ipynb
