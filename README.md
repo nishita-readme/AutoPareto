@@ -33,8 +33,8 @@ Parti_pipeline/
 │   ├── accessories/        # Accessory files (e.g. QC_genes.txt — gene exclusion list)
 │   ├── processed/          # Output from Stage 1 (counts CSV, metadata CSV, .h5ad)
 │   ├── ref/
-│   │   └── raw/            # Reference data: GSE115746 counts + metadata (.csv.gz)
-│   └── test/               # Small test datasets for pipeline validation
+│   │   └── raw/            # Reference data: counts + metadata (.csv.gz)
+│   └── test/               
 ├── environment/            # Conda/pip environment files
 ├── notebooks/
 │   └── tutorial.ipynb      # Main analysis notebook (Stage 2)
