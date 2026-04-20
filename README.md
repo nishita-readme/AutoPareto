@@ -135,6 +135,12 @@ query <- preprocess_and_run_transferanchor(
 
 This runs: normalization → variable features → scaling → PCA → `FindTransferAnchors` → `TransferData` on both objects. The query is returned with `predicted_subclass` and `prediction.score.*` columns added to metadata.
 
+You can then subset for your choice of predicted_subclass
+
+```r
+query <- subset(query, subset = predicted_subclass == "L2/3 IT")
+```
+
 #### 4. Export for Python
 
 ```r
