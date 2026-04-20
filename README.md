@@ -214,7 +214,7 @@ preprocess_adata(adata, apply_harmony=True, batch_key="Sample")
 sc.pl.pca_scatter(adata, components=['1,2', '1,3', '2,3'])
 ```
 
-![PCA scatter](output_15_0.png)
+![PCA scatter](assets/figures/output_15_0.png)
 
 ### 5. Determine number of informative PCs
 
@@ -225,7 +225,7 @@ pt.plot_shuffled_pca(adata)   # look for where unshuffled crosses shuffled
 
 The plot shows variance explained per PC for real vs. shuffled data. Use PCs up to where the real data curve meets the noise floor.
 
-![Shuffled PCA](output_17_1.png)
+![Shuffled PCA](assets/figures/output_17_1.png)
 
 In this dataset, ~8–10 PCs are informative (`n_dims = 8`).
 
@@ -249,27 +249,27 @@ This produces:
 
 **Variance explained** — look for the elbow where gains diminish:
 
-![Variance explained](output_22_1.png)
+![Variance explained](assets/figures/output_22_1.png)
 
 **Information Criterion (IC)** — look for the minimum:
 
-![IC plot](output_22_3.png)
+![IC plot](assets/figures/output_22_3.png)
 
 **Bootstrap variance** — lower = more stable archetypes:
 
-![Bootstrap variance](output_22_5.png)
+![Bootstrap variance](assets/figures/output_22_5.png)
 
 **T-ratio significance** — archetypes below p=0.05 are significantly better than random:
 
-![T-ratio](output_22_9.png)
+![T-ratio](assets/figures/output_22_9.png)
 
 **2D archetype scatter plots** — one per k value, showing archetype locations in PC space:
 
-![k=3](output_22_11.png)
-![k=4](output_22_13.png)
-![k=5](output_22_15.png)
-![k=6](output_22_17.png)
-![k=7](output_22_19.png)
+![k=3](assets/figures/output_22_11.png)
+![k=4](assets/figures/output_22_13.png)
+![k=5](assets/figures/output_22_15.png)
+![k=6](assets/figures/output_22_17.png)
+![k=7](assets/figures/output_22_19.png)
 
 Based on IC minimum at k=3 and T-ratio significance at k=7, choose `n_archetypes = 3` as the most parsimonious solution.
 
@@ -282,7 +282,7 @@ adata = get_top_cells_per_archetype(adata, n_archetypes=n_archetypes, top_n=200,
 plot_top_cells_per_archetype(adata, dims=(0, 1))
 ```
 
-![Top cells](output_29_0.png)
+![Top cells](assets/figures/output_29_0.png)
 
 Each archetype occupies a distinct corner of PC space, consistent with the simplex structure.
 
