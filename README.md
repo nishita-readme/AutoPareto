@@ -359,6 +359,5 @@ strict_go_results = run_strict_go_analysis(strict_genes_df, adata, organism="mou
 
 - All intermediate Python utility functions live in `scripts/utils.py`. Import with `from scripts.utils import *` from the notebooks directory.
 - All R utility functions live in `scripts/utils_R.R`. Source with `source("scripts/utils_R.R")`.
-- `data/processed/` is where Stage 1 writes outputs and Stage 2 reads inputs. Keep it in sync.
 - `data/accessories/QC_genes.txt` — tab-separated file, first column is gene names to exclude from HVG selection (mitochondrial, ribosomal, sex-linked, etc.).
 - Results (DEG tables, GO outputs, figures) should be written to `results/`.
