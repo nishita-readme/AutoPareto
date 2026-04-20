@@ -45,8 +45,20 @@ Parti_pipeline/
 
 ### R (Stage 1)
 ```r
-install.packages(c("Seurat", "SeuratDisk", "Matrix", "optparse", "dplyr"))
-BiocManager::install("glmGamPoi")   # optional but recommended for SCT
+```r
+install.packages(c(
+  "Seurat",     # 5.3.0
+  "Matrix",     # 1.6.5
+  "optparse",   # 1.7.5
+  "dplyr"       # 1.1.4
+))
+
+# Bioconductor
+BiocManager::install(c(
+  "glmGamPoi",  # 1.14.3 — optional but recommended for SCT
+  "SeuratDisk"  # 0.0.0.9021
+))
+```
 ```
 
 ### Python (Stage 2)
