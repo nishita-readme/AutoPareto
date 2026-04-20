@@ -40,8 +40,7 @@ Parti_pipeline/
 │   └── tutorial.ipynb      # Main analysis notebook (Stage 2)
 ├── results/                # Final outputs: DEG tables, GO results, figures
 ├── scripts/
-│   ├── 01_transfer_annotation.R   # Stage 1: label transfer (R)
-│   ├── utils_R.R                  # R utility functions (load_seurat, plot_qc, etc.)
+│   ├── utils_R.R                  # R utility functions (load_seurat, plot_qc, preprocess_and_run_transferanchor(etc.)
 │   └── utils.py                   # Python utility functions (AA, DEG, GO, etc.)
 └── README.md
 ```
@@ -68,56 +67,87 @@ pip install scanpy partipy gseapy anndata pandas numpy matplotlib scipy
 
 ## Stage 1 — Annotation Transfer (R)
 
-**Script:** `scripts/01_transfer_annotation.R`
-
-This script requires a reference dataset with metadata that you would like to annotate your query dataset with. It uses **Seurat's anchor-based transfer** to annotate cell subclasses in your query dataset.
-
-### Tutorial
-
-### R utility functions (`utils_R.R`)
-
-These functions can used interactively in an R session:
+### Walkthrough
 
 ```r
 source("scripts/utils_R.R")
-
-# Load counts + metadata of reference dataset into a Seurat object
-seu_ref <- load_seurat(
-  counts_path = "path/to/ref_counts.csv.gz",
-  meta_path   = "path/to/ref_metadata.csv.gz"
-)
-
-# Load counts + metadata of your (query) dataset into a Seurat object
-seu_query <- load_seurat(
-  counts_path = "path/to/query_counts.csv.gz",
-  meta_path   = "path/to/query_metadata.csv.gz"
-)
-
-# QC plots — returns seu with pct.mt and pct.ribo added. Note that the case of mt and Rp changes based on species and dataset versions.
-seu_query <- plot_qc(seu_query, mt_pattern = "^mt-", ribo_pattern = "^Rp[sl]")
-
-# Filter after inspecting plots
-seu_query <- subset(seu_query, nFeature_RNA > 500 & nFeature_RNA < 6000 & pct.mt < 15)
-
-# Preprocess + transfer annotations
-seu_query <- preprocess_and_run_transferanchor(
-  query           = seu_query,
-  reference       = seu_ref,
-  normalization   = "lognorm",   # or "SCT"
-  ref_label_col   = "cell_subclass",
-  query_label_col = "predicted_subclass",
-  dims            = 1:30
-)
-
-# Export to counts and metadata file for Python
-write_counts_metadata(seu_query, "data/processed/query_counts.csv", "data/processed/query_metadata.csv")
 ```
 
-### Output
+#### 1. Load reference and query
 
-The script writes a metadata with the annotation columns added to the cells
+```r
+ref <- load_seurat(
+  counts_path = "data/ref/raw/counts.csv.gz",
+  meta_path   = "data/ref/raw/metadata.csv.gz",
+)
 
----
+query <- load_seurat(
+  counts_path = "data/test/query_counts.csv.gz",
+  meta_path   = "data/test/query_metadata.csv.gz",
+)
+```
+
+> If your counts matrix is cells × genes instead of genes × cells, pass `transpose = TRUE`.
+
+#### 2. QC
+
+```r
+# adds pct.mt and pct.ribo to metadata, returns seu with those columns attached
+ref   <- plot_qc(ref,   mt_pattern = "^mt-", ribo_pattern = "^Rp[sl]")
+query <- plot_qc(query, mt_pattern = "^mt-", ribo_pattern = "^Rp[sl]")
+```
+
+Inspect the violin and scatter plots, then filter:
+
+```r
+ref   <- subset(ref,   nFeature_RNA > 500 & nFeature_RNA < 6000 & pct.mt < 15)
+query <- subset(query, nFeature_RNA > 500 & nFeature_RNA < 6000 & pct.mt < 15)
+```
+
+Typical thresholds for mouse brain:
+
+| Metric | Filter |
+|---|---|
+| `nFeature_RNA` | 500 – 6000 |
+| `pct.mt` | < 15% |
+| `pct.ribo` | < 50% |
+
+#### 3. Transfer annotations
+
+```r
+query <- preprocess_and_run_transferanchor(
+  query           = query,
+  reference       = ref,
+  normalization   = "lognorm",        # or "SCT"
+  ref_label_col   = "cell_subclass",  # column in ref metadata to transfer
+  query_label_col = "predicted_subclass",
+  dims            = 1:30,
+  n_features      = 3000
+)
+```
+
+This runs: normalization → variable features → scaling → PCA → `FindTransferAnchors` → `TransferData` on both objects. The query is returned with `predicted_subclass` and `prediction.score.*` columns added to metadata.
+
+#### 4. Export for Python
+
+```r
+save_annotated_data(
+  seu                = query,
+  counts_output_file = "data/processed/query_counts.csv",
+  meta_output_file   = "data/processed/query_metadata.csv"
+)
+```
+
+These two files are the inputs to Stage 2.
+
+### Function reference
+
+| Function | Description |
+|---|---|
+| `load_seurat(counts_path, meta_path, transpose, project)` | Load counts + metadata into a Seurat object |
+| `plot_qc(seu, mt_pattern, ribo_pattern, group_by)` | Plot QC violins and scatter plots; adds `pct.mt`, `pct.ribo` to metadata |
+| `preprocess_and_run_transferanchor(query, reference, ...)` | Full preprocessing + anchor-based label transfer |
+| `save_annotated_data(seu, counts_output_file, meta_output_file)` | Export counts and metadata as CSVs for Python |
 
 ## Stage 2 — Archetypal Analysis (Python)
 
