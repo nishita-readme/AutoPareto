@@ -164,7 +164,7 @@ meta   = pd.read_csv("../data/processed/query_metadata.csv", index_col=0)
 adata  = sc.AnnData(X=counts.T, obs=meta)
 ```
 
-**QC check**
+**Verify that there are raw integer counts in adata.Xs**
 
 ```python
 check_raw_integers_in_adataX(adata)
