@@ -1,6 +1,6 @@
 # AutoPareto
 
-A two-stage single-cell RNA-seq analysis pipeline for transferring cell type annotations from a reference atlas and performing **Archetypal Analysis ** to identify extreme gene expression programs within a population.
+A two-stage single-cell RNA-seq analysis pipeline for transferring cell type annotations from a reference atlas and performing **Archetypal Analysis** to identify extreme gene expression programs within a population.
 
 ---
 
@@ -61,10 +61,13 @@ BiocManager::install(c(
 
 ### Python (Stage 2)
 ```bash
-conda env create -f environment/environment.yml
+conda env create -f /path/to/environment/environment.yml
 conda activate parti
 # or manually:
-pip install scanpy partipy gseapy anndata pandas numpy matplotlib scipy
+pip install scanpy partipy gseapy anndata pandas numpy matplotlib scipy ipykernel
+
+# Register the environment as a Jupyter kernel so the notebook can use it
+python -m ipykernel install --user --name parti --display-name "Python (parti)"
 ```
 
 ---
@@ -73,7 +76,7 @@ pip install scanpy partipy gseapy anndata pandas numpy matplotlib scipy
 ### Walkthrough
 
 ```r
-source("scripts/utils_R.R")
+source("/path/to/scripts/utils_R.R")
 ```
 
 #### 1. Load reference and query
@@ -81,13 +84,13 @@ Reference dataset should contain the metadata column that you intend to use to a
 
 ```r
 ref <- load_seurat(
-  counts_path = "data/ref/raw/counts.csv.gz",
-  meta_path   = "data/ref/raw/metadata.csv.gz",
+  counts_path = "/path/to/data/ref/raw/counts.csv.gz",
+  meta_path   = "/path/to/data/ref/raw/metadata.csv.gz",
 )
 
 query <- load_seurat(
-  counts_path = "data/test/query_counts.csv.gz",
-  meta_path   = "data/test/query_metadata.csv.gz",
+  counts_path = "/path/to/data/test/query_counts.csv.gz",
+  meta_path   = "/path/to/data/test/query_metadata.csv.gz",
 )
 ```
 
@@ -100,6 +103,12 @@ query <- load_seurat(
 ref   <- plot_qc(ref,   mt_pattern = "^mt-", ribo_pattern = "^Rp[sl]")
 query <- plot_qc(query, mt_pattern = "^mt-", ribo_pattern = "^Rp[sl]")
 ```
+
+> **Note on gene name prefixes:** The mitochondrial and ribosomal patterns depend on your species and genome annotation version. Common conventions:
+> - **Mouse (mm10/GRCm38):** `mt_pattern = "^mt-"`, `ribo_pattern = "^Rp[sl]"`
+> - **Human (hg38/GRCh38):** `mt_pattern = "^MT-"`, `ribo_pattern = "^RP[SL]"`
+>
+> Check your gene names if you get zero mitochondrial or ribosomal genes detected.
 
 Inspect the violin and scatter plots, then filter:
 
@@ -143,8 +152,8 @@ query <- subset(query, subset = predicted_subclass == "L2/3 IT")
 ```r
 save_annotated_data(
   seu                = query,
-  counts_output_file = "data/processed/query_counts.csv",
-  meta_output_file   = "data/processed/query_metadata.csv"
+  counts_output_file = "/path/to/data/processed/query_counts.csv",
+  meta_output_file   = "/path/to/data/processed/query_metadata.csv"
 )
 ```
 
@@ -169,11 +178,11 @@ These two files are the inputs to Stage 2.
 import scanpy as sc
 import pandas as pd
 import sys
-sys.path.append("..")
+sys.path.append("/path/to/AutoPareto")
 from scripts.utils import *
 
-counts = pd.read_csv("../data/processed/query_counts.csv", index_col=0)
-meta   = pd.read_csv("../data/processed/query_metadata.csv", index_col=0)
+counts = pd.read_csv("/path/to/query_counts.csv", index_col=0)
+meta   = pd.read_csv("/path/to/query_metadata.csv", index_col=0)
 adata  = sc.AnnData(X=counts.T, obs=meta)
 ```
 
@@ -204,9 +213,9 @@ or biological reasons unrelated to cell identity:
   or any gene flagged during QC
 
 ```python
-QC_genes = pd.read_csv("../data/accessories/QC_genes.txt", sep="\t").iloc[:, 0].tolist()
-
+QC_genes = pd.read_csv("/path/to/data/accessories/QC_genes.txt", sep="\t").iloc[:, 0].tolist()
 ```
+
 ### 3. Preprocessing
 This performs: normalization → log1p → HVG selection → gene exclusion → z-score scaling (stored in `adata.layers["z_scaled"]`) → PCA.
 
@@ -357,11 +366,12 @@ enrichment for genes we actually measured.
 A significant GO term tells us that an archetype is not just defined by random genes, 
 but by genes that share a coherent biological role. This is how we go from 
 *"archetype 2 exists"* to *"archetype 2 represents cells engaged in synaptic transmission"*.
+
 **ORA (over-representation analysis)** using Enrichr with dataset-wide background:
 ```python
 go_results = run_go_analysis(deg_dict, adata, organism="mouse", n_top_genes=200)
-
 ```
+
 ## Optionally, you may also run a GO analysis with "strict" archetype gene list
 ```python
 strict_go_results = run_strict_go_analysis(strict_genes_df, adata, organism="mouse")
@@ -372,5 +382,5 @@ strict_go_results = run_strict_go_analysis(strict_genes_df, adata, organism="mou
 ## Notes
 
 - All intermediate Python utility functions live in `scripts/utils.py`. Import with `from scripts.utils import *` from the notebooks directory.
-- All R utility functions live in `scripts/utils_R.R`. Source with `source("scripts/utils_R.R")`.
-- `data/accessories/QC_genes.txt` — tab-separated file, first column is gene names to exclude from HVG selection (mitochondrial, ribosomal, sex-linked, etc.).
+- All R utility functions live in `scripts/utils_R.R`. Source with `source("/path/to/scripts/utils_R.R")`.
+- `/path/to/data/accessories/QC_genes.txt` — tab-separated file, first column is gene names to exclude from HVG selection (mitochondrial, ribosomal, sex-linked, etc.).
