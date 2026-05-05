@@ -104,15 +104,15 @@ query <- plot_qc(query, mt_pattern = "^mt-", ribo_pattern = "^Rp[sl]")
 Inspect the violin and scatter plots, then filter:
 
 ```r
-ref   <- subset(ref,   nFeature_RNA > 500 & nFeature_RNA < 6000 & pct.mt < 15)
-query <- subset(query, nFeature_RNA > 500 & nFeature_RNA < 6000 & pct.mt < 15)
+ref   <- subset(ref,   nFeature_RNA > 500 & pct.mt < 15)
+query <- subset(query, nFeature_RNA > 500 & pct.mt < 15)
 ```
 
 Typical thresholds for mouse brain:
 
 | Metric | Filter |
 |---|---|
-| `nFeature_RNA` | 500 – 6000 |
+| `nFeature_RNA` | > 500 |
 | `pct.mt` | < 15% |
 | `pct.ribo` | < 50% |
 
