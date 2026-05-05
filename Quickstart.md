@@ -7,7 +7,7 @@
 ## 1. Clone & set up
 
 ```bash
-git clone https://github.com/<your-username>/AutoPareto.git
+git clone https://github.com/nishita-readme/AutoPareto.git
 cd AutoPareto
 ```
 
