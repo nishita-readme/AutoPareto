@@ -1,0 +1,293 @@
+gene	category	species	notes
+MT-ND1	mitochondrial	human	NADH dehydrogenase subunit 1
+MT-ND2	mitochondrial	human	NADH dehydrogenase subunit 2
+MT-ND3	mitochondrial	human	NADH dehydrogenase subunit 3
+MT-ND4	mitochondrial	human	NADH dehydrogenase subunit 4
+MT-ND4L	mitochondrial	human	NADH dehydrogenase subunit 4L
+MT-ND5	mitochondrial	human	NADH dehydrogenase subunit 5
+MT-ND6	mitochondrial	human	NADH dehydrogenase subunit 6
+MT-CO1	mitochondrial	human	Cytochrome c oxidase subunit 1
+MT-CO2	mitochondrial	human	Cytochrome c oxidase subunit 2
+MT-CO3	mitochondrial	human	Cytochrome c oxidase subunit 3
+MT-ATP6	mitochondrial	human	ATP synthase subunit 6
+MT-ATP8	mitochondrial	human	ATP synthase subunit 8
+MT-CYB	mitochondrial	human	Cytochrome b
+MT-RNR1	mitochondrial	human	12S rRNA
+MT-RNR2	mitochondrial	human	16S rRNA
+MT-TA	mitochondrial	human	mt tRNA Ala
+MT-TC	mitochondrial	human	mt tRNA Cys
+MT-TD	mitochondrial	human	mt tRNA Asp
+MT-TE	mitochondrial	human	mt tRNA Glu
+MT-TF	mitochondrial	human	mt tRNA Phe
+MT-TG	mitochondrial	human	mt tRNA Gly
+MT-TH	mitochondrial	human	mt tRNA His
+MT-TI	mitochondrial	human	mt tRNA Ile
+MT-TK	mitochondrial	human	mt tRNA Lys
+MT-TL1	mitochondrial	human	mt tRNA Leu1
+MT-TL2	mitochondrial	human	mt tRNA Leu2
+MT-TM	mitochondrial	human	mt tRNA Met
+MT-TN	mitochondrial	human	mt tRNA Asn
+MT-TP	mitochondrial	human	mt tRNA Pro
+MT-TQ	mitochondrial	human	mt tRNA Gln
+MT-TR	mitochondrial	human	mt tRNA Arg
+MT-TS1	mitochondrial	human	mt tRNA Ser1
+MT-TS2	mitochondrial	human	mt tRNA Ser2
+MT-TT	mitochondrial	human	mt tRNA Thr
+MT-TV	mitochondrial	human	mt tRNA Val
+MT-TW	mitochondrial	human	mt tRNA Trp
+MT-TY	mitochondrial	human	mt tRNA Tyr
+mt-Nd1	mitochondrial	mouse	NADH dehydrogenase subunit 1
+mt-Nd2	mitochondrial	mouse	NADH dehydrogenase subunit 2
+mt-Nd3	mitochondrial	mouse	NADH dehydrogenase subunit 3
+mt-Nd4	mitochondrial	mouse	NADH dehydrogenase subunit 4
+mt-Nd4l	mitochondrial	mouse	NADH dehydrogenase subunit 4L
+mt-Nd5	mitochondrial	mouse	NADH dehydrogenase subunit 5
+mt-Nd6	mitochondrial	mouse	NADH dehydrogenase subunit 6
+mt-Co1	mitochondrial	mouse	Cytochrome c oxidase subunit 1
+mt-Co2	mitochondrial	mouse	Cytochrome c oxidase subunit 2
+mt-Co3	mitochondrial	mouse	Cytochrome c oxidase subunit 3
+mt-Atp6	mitochondrial	mouse	ATP synthase subunit 6
+mt-Atp8	mitochondrial	mouse	ATP synthase subunit 8
+mt-Cytb	mitochondrial	mouse	Cytochrome b
+mt-Rnr1	mitochondrial	mouse	12S rRNA
+mt-Rnr2	mitochondrial	mouse	16S rRNA
+mt-Ta	mitochondrial	mouse	mt tRNA Ala
+mt-Tc	mitochondrial	mouse	mt tRNA Cys
+mt-Td	mitochondrial	mouse	mt tRNA Asp
+mt-Te	mitochondrial	mouse	mt tRNA Glu
+mt-Tf	mitochondrial	mouse	mt tRNA Phe
+mt-Tg	mitochondrial	mouse	mt tRNA Gly
+mt-Th	mitochondrial	mouse	mt tRNA His
+mt-Ti	mitochondrial	mouse	mt tRNA Ile
+mt-Tk	mitochondrial	mouse	mt tRNA Lys
+mt-Tl1	mitochondrial	mouse	mt tRNA Leu1
+mt-Tl2	mitochondrial	mouse	mt tRNA Leu2
+mt-Tm	mitochondrial	mouse	mt tRNA Met
+mt-Tn	mitochondrial	mouse	mt tRNA Asn
+mt-Tp	mitochondrial	mouse	mt tRNA Pro
+mt-Tq	mitochondrial	mouse	mt tRNA Gln
+mt-Tr	mitochondrial	mouse	mt tRNA Arg
+mt-Ts1	mitochondrial	mouse	mt tRNA Ser1
+mt-Ts2	mitochondrial	mouse	mt tRNA Ser2
+mt-Tt	mitochondrial	mouse	mt tRNA Thr
+mt-Tv	mitochondrial	mouse	mt tRNA Val
+mt-Tw	mitochondrial	mouse	mt tRNA Trp
+mt-Ty	mitochondrial	mouse	mt tRNA Tyr
+RPS2	ribosomal	human	40S ribosomal protein S2
+RPS3	ribosomal	human	40S ribosomal protein S3
+RPS3A	ribosomal	human	40S ribosomal protein S3A
+RPS4X	ribosomal	human	40S ribosomal protein S4 X-linked
+RPS4Y1	ribosomal	human	40S ribosomal protein S4 Y-linked
+RPS5	ribosomal	human	40S ribosomal protein S5
+RPS6	ribosomal	human	40S ribosomal protein S6
+RPS7	ribosomal	human	40S ribosomal protein S7
+RPS8	ribosomal	human	40S ribosomal protein S8
+RPS9	ribosomal	human	40S ribosomal protein S9
+RPS10	ribosomal	human	40S ribosomal protein S10
+RPS11	ribosomal	human	40S ribosomal protein S11
+RPS12	ribosomal	human	40S ribosomal protein S12
+RPS13	ribosomal	human	40S ribosomal protein S13
+RPS14	ribosomal	human	40S ribosomal protein S14
+RPS15	ribosomal	human	40S ribosomal protein S15
+RPS15A	ribosomal	human	40S ribosomal protein S15A
+RPS16	ribosomal	human	40S ribosomal protein S16
+RPS17	ribosomal	human	40S ribosomal protein S17
+RPS18	ribosomal	human	40S ribosomal protein S18
+RPS19	ribosomal	human	40S ribosomal protein S19
+RPS20	ribosomal	human	40S ribosomal protein S20
+RPS21	ribosomal	human	40S ribosomal protein S21
+RPS23	ribosomal	human	40S ribosomal protein S23
+RPS24	ribosomal	human	40S ribosomal protein S24
+RPS25	ribosomal	human	40S ribosomal protein S25
+RPS26	ribosomal	human	40S ribosomal protein S26
+RPS27	ribosomal	human	40S ribosomal protein S27
+RPS27A	ribosomal	human	Ubiquitin-40S ribosomal protein S27a
+RPS28	ribosomal	human	40S ribosomal protein S28
+RPS29	ribosomal	human	40S ribosomal protein S29
+RPS30	ribosomal	human	40S ribosomal protein S30
+RPL3	ribosomal	human	60S ribosomal protein L3
+RPL4	ribosomal	human	60S ribosomal protein L4
+RPL5	ribosomal	human	60S ribosomal protein L5
+RPL6	ribosomal	human	60S ribosomal protein L6
+RPL7	ribosomal	human	60S ribosomal protein L7
+RPL7A	ribosomal	human	60S ribosomal protein L7a
+RPL8	ribosomal	human	60S ribosomal protein L8
+RPL9	ribosomal	human	60S ribosomal protein L9
+RPL10	ribosomal	human	60S ribosomal protein L10
+RPL10A	ribosomal	human	60S ribosomal protein L10a
+RPL11	ribosomal	human	60S ribosomal protein L11
+RPL12	ribosomal	human	60S ribosomal protein L12
+RPL13	ribosomal	human	60S ribosomal protein L13
+RPL13A	ribosomal	human	60S ribosomal protein L13a
+RPL14	ribosomal	human	60S ribosomal protein L14
+RPL15	ribosomal	human	60S ribosomal protein L15
+RPL17	ribosomal	human	60S ribosomal protein L17
+RPL18	ribosomal	human	60S ribosomal protein L18
+RPL18A	ribosomal	human	60S ribosomal protein L18a
+RPL19	ribosomal	human	60S ribosomal protein L19
+RPL21	ribosomal	human	60S ribosomal protein L21
+RPL22	ribosomal	human	60S ribosomal protein L22
+RPL23	ribosomal	human	60S ribosomal protein L23
+RPL23A	ribosomal	human	60S ribosomal protein L23a
+RPL24	ribosomal	human	60S ribosomal protein L24
+RPL26	ribosomal	human	60S ribosomal protein L26
+RPL27	ribosomal	human	60S ribosomal protein L27
+RPL27A	ribosomal	human	60S ribosomal protein L27a
+RPL28	ribosomal	human	60S ribosomal protein L28
+RPL29	ribosomal	human	60S ribosomal protein L29
+RPL30	ribosomal	human	60S ribosomal protein L30
+RPL31	ribosomal	human	60S ribosomal protein L31
+RPL32	ribosomal	human	60S ribosomal protein L32
+RPL34	ribosomal	human	60S ribosomal protein L34
+RPL35	ribosomal	human	60S ribosomal protein L35
+RPL35A	ribosomal	human	60S ribosomal protein L35a
+RPL36	ribosomal	human	60S ribosomal protein L36
+RPL36A	ribosomal	human	60S ribosomal protein L36a
+RPL37	ribosomal	human	60S ribosomal protein L37
+RPL37A	ribosomal	human	60S ribosomal protein L37a
+RPL38	ribosomal	human	60S ribosomal protein L38
+RPL39	ribosomal	human	60S ribosomal protein L39
+RPL41	ribosomal	human	60S ribosomal protein L41
+RPLP0	ribosomal	human	60S acidic ribosomal protein P0
+RPLP1	ribosomal	human	60S acidic ribosomal protein P1
+RPLP2	ribosomal	human	60S acidic ribosomal protein P2
+Rps2	ribosomal	mouse	40S ribosomal protein S2
+Rps3	ribosomal	mouse	40S ribosomal protein S3
+Rps3a	ribosomal	mouse	40S ribosomal protein S3A
+Rps4x	ribosomal	mouse	40S ribosomal protein S4 X-linked
+Rps5	ribosomal	mouse	40S ribosomal protein S5
+Rps6	ribosomal	mouse	40S ribosomal protein S6
+Rps7	ribosomal	mouse	40S ribosomal protein S7
+Rps8	ribosomal	mouse	40S ribosomal protein S8
+Rps9	ribosomal	mouse	40S ribosomal protein S9
+Rps10	ribosomal	mouse	40S ribosomal protein S10
+Rps11	ribosomal	mouse	40S ribosomal protein S11
+Rps12	ribosomal	mouse	40S ribosomal protein S12
+Rps13	ribosomal	mouse	40S ribosomal protein S13
+Rps14	ribosomal	mouse	40S ribosomal protein S14
+Rps15	ribosomal	mouse	40S ribosomal protein S15
+Rps15a	ribosomal	mouse	40S ribosomal protein S15A
+Rps16	ribosomal	mouse	40S ribosomal protein S16
+Rps17	ribosomal	mouse	40S ribosomal protein S17
+Rps18	ribosomal	mouse	40S ribosomal protein S18
+Rps19	ribosomal	mouse	40S ribosomal protein S19
+Rps20	ribosomal	mouse	40S ribosomal protein S20
+Rps21	ribosomal	mouse	40S ribosomal protein S21
+Rps23	ribosomal	mouse	40S ribosomal protein S23
+Rps24	ribosomal	mouse	40S ribosomal protein S24
+Rps25	ribosomal	mouse	40S ribosomal protein S25
+Rps26	ribosomal	mouse	40S ribosomal protein S26
+Rps27	ribosomal	mouse	40S ribosomal protein S27
+Rps27a	ribosomal	mouse	Ubiquitin-40S ribosomal protein S27a
+Rps28	ribosomal	mouse	40S ribosomal protein S28
+Rps29	ribosomal	mouse	40S ribosomal protein S29
+Rpl3	ribosomal	mouse	60S ribosomal protein L3
+Rpl4	ribosomal	mouse	60S ribosomal protein L4
+Rpl5	ribosomal	mouse	60S ribosomal protein L5
+Rpl6	ribosomal	mouse	60S ribosomal protein L6
+Rpl7	ribosomal	mouse	60S ribosomal protein L7
+Rpl7a	ribosomal	mouse	60S ribosomal protein L7a
+Rpl8	ribosomal	mouse	60S ribosomal protein L8
+Rpl9	ribosomal	mouse	60S ribosomal protein L9
+Rpl10	ribosomal	mouse	60S ribosomal protein L10
+Rpl10a	ribosomal	mouse	60S ribosomal protein L10a
+Rpl11	ribosomal	mouse	60S ribosomal protein L11
+Rpl12	ribosomal	mouse	60S ribosomal protein L12
+Rpl13	ribosomal	mouse	60S ribosomal protein L13
+Rpl13a	ribosomal	mouse	60S ribosomal protein L13a
+Rpl14	ribosomal	mouse	60S ribosomal protein L14
+Rpl15	ribosomal	mouse	60S ribosomal protein L15
+Rpl17	ribosomal	mouse	60S ribosomal protein L17
+Rpl18	ribosomal	mouse	60S ribosomal protein L18
+Rpl18a	ribosomal	mouse	60S ribosomal protein L18a
+Rpl19	ribosomal	mouse	60S ribosomal protein L19
+Rpl21	ribosomal	mouse	60S ribosomal protein L21
+Rpl22	ribosomal	mouse	60S ribosomal protein L22
+Rpl23	ribosomal	mouse	60S ribosomal protein L23
+Rpl23a	ribosomal	mouse	60S ribosomal protein L23a
+Rpl24	ribosomal	mouse	60S ribosomal protein L24
+Rpl26	ribosomal	mouse	60S ribosomal protein L26
+Rpl27	ribosomal	mouse	60S ribosomal protein L27
+Rpl27a	ribosomal	mouse	60S ribosomal protein L27a
+Rpl28	ribosomal	mouse	60S ribosomal protein L28
+Rpl29	ribosomal	mouse	60S ribosomal protein L29
+Rpl30	ribosomal	mouse	60S ribosomal protein L30
+Rpl31	ribosomal	mouse	60S ribosomal protein L31
+Rpl32	ribosomal	mouse	60S ribosomal protein L32
+Rpl34	ribosomal	mouse	60S ribosomal protein L34
+Rpl35	ribosomal	mouse	60S ribosomal protein L35
+Rpl35a	ribosomal	mouse	60S ribosomal protein L35a
+Rpl36	ribosomal	mouse	60S ribosomal protein L36
+Rpl36a	ribosomal	mouse	60S ribosomal protein L36a
+Rpl37	ribosomal	mouse	60S ribosomal protein L37
+Rpl37a	ribosomal	mouse	60S ribosomal protein L37a
+Rpl38	ribosomal	mouse	60S ribosomal protein L38
+Rpl39	ribosomal	mouse	60S ribosomal protein L39
+Rpl41	ribosomal	mouse	60S ribosomal protein L41
+Rplp0	ribosomal	mouse	60S acidic ribosomal protein P0
+Rplp1	ribosomal	mouse	60S acidic ribosomal protein P1
+Rplp2	ribosomal	mouse	60S acidic ribosomal protein P2
+XIST	sex_chromosome	human	X-inactive specific transcript (female marker)
+TSIX	sex_chromosome	human	XIST antisense RNA
+DDX3Y	sex_chromosome	human	DEAD-box helicase 3 Y-linked (male marker)
+EIF1AY	sex_chromosome	human	Eukaryotic translation initiation factor 1A Y-linked
+KDM5D	sex_chromosome	human	Lysine demethylase 5D (male marker)
+NLGN4Y	sex_chromosome	human	Neuroligin 4 Y-linked
+RPS4Y1	sex_chromosome	human	Ribosomal protein S4 Y-linked 1
+RPS4Y2	sex_chromosome	human	Ribosomal protein S4 Y-linked 2
+USP9Y	sex_chromosome	human	Ubiquitin specific peptidase 9 Y-linked
+UTY	sex_chromosome	human	Ubiquitously transcribed tetratricopeptide repeat containing Y-linked
+ZFY	sex_chromosome	human	Zinc finger Y-linked
+Xist	sex_chromosome	mouse	X-inactive specific transcript (female marker)
+Tsix	sex_chromosome	mouse	Xist antisense RNA
+Ddx3y	sex_chromosome	mouse	DEAD-box helicase 3 Y-linked (male marker)
+Eif2s3y	sex_chromosome	mouse	Eukaryotic translation initiation factor 2 subunit 3 Y-linked
+Kdm5d	sex_chromosome	mouse	Lysine demethylase 5D (male marker)
+Usp9y	sex_chromosome	mouse	Ubiquitin specific peptidase 9 Y-linked
+Uty	sex_chromosome	mouse	Ubiquitously transcribed tetratricopeptide repeat containing Y-linked
+JUN	dissociation_stress	human/mouse	Immediate early gene; upregulated by dissociation stress
+FOS	dissociation_stress	human/mouse	Immediate early gene; upregulated by dissociation stress
+FOSB	dissociation_stress	human/mouse	Immediate early gene; dissociation-induced
+FOSL1	dissociation_stress	human/mouse	FOS-like antigen 1; dissociation-induced
+FOSL2	dissociation_stress	human/mouse	FOS-like antigen 2; dissociation-induced
+JUNB	dissociation_stress	human/mouse	Immediate early gene; dissociation-induced
+JUND	dissociation_stress	human/mouse	Immediate early gene; dissociation-induced
+ATF3	dissociation_stress	human/mouse	Activating transcription factor 3; stress response
+EGR1	dissociation_stress	human/mouse	Early growth response 1; dissociation-induced
+EGR2	dissociation_stress	human/mouse	Early growth response 2; dissociation-induced
+NR4A1	dissociation_stress	human/mouse	Nuclear receptor subfamily 4; stress-induced
+HSPA1A	dissociation_stress	human/mouse	Heat shock 70kDa protein 1A; stress response
+HSPA1B	dissociation_stress	human/mouse	Heat shock 70kDa protein 1B; stress response
+HSPB1	dissociation_stress	human/mouse	Heat shock protein beta-1; stress response
+Jun	dissociation_stress	mouse	Immediate early gene; upregulated by dissociation stress
+Fos	dissociation_stress	mouse	Immediate early gene; upregulated by dissociation stress
+Fosb	dissociation_stress	mouse	Immediate early gene; dissociation-induced
+Fosl1	dissociation_stress	mouse	FOS-like antigen 1; dissociation-induced
+Fosl2	dissociation_stress	mouse	FOS-like antigen 2; dissociation-induced
+Junb	dissociation_stress	mouse	Immediate early gene; dissociation-induced
+Jund	dissociation_stress	mouse	Immediate early gene; dissociation-induced
+Atf3	dissociation_stress	mouse	Activating transcription factor 3; stress response
+Egr1	dissociation_stress	mouse	Early growth response 1; dissociation-induced
+Egr2	dissociation_stress	mouse	Early growth response 2; dissociation-induced
+Nr4a1	dissociation_stress	mouse	Nuclear receptor subfamily 4; stress-induced
+Hspa1a	dissociation_stress	mouse	Heat shock 70kDa protein 1A; stress response
+Hspa1b	dissociation_stress	mouse	Heat shock 70kDa protein 1B; stress response
+Hspb1	dissociation_stress	mouse	Heat shock protein beta-1; stress response
+HBA1	haemoglobin	human	Haemoglobin subunit alpha 1; RBC contamination marker
+HBA2	haemoglobin	human	Haemoglobin subunit alpha 2; RBC contamination marker
+HBB	haemoglobin	human	Haemoglobin subunit beta; RBC contamination marker
+HBD	haemoglobin	human	Haemoglobin subunit delta; RBC contamination marker
+HBE1	haemoglobin	human	Haemoglobin subunit epsilon 1; embryonic
+HBG1	haemoglobin	human	Haemoglobin subunit gamma 1; fetal
+HBG2	haemoglobin	human	Haemoglobin subunit gamma 2; fetal
+HBM	haemoglobin	human	Haemoglobin subunit mu
+HBQ1	haemoglobin	human	Haemoglobin subunit theta 1
+HBZ	haemoglobin	human	Haemoglobin subunit zeta; embryonic
+Hba-a1	haemoglobin	mouse	Haemoglobin alpha adult chain 1; RBC contamination marker
+Hba-a2	haemoglobin	mouse	Haemoglobin alpha adult chain 2; RBC contamination marker
+Hbb-bs	haemoglobin	mouse	Haemoglobin beta adult s chain; RBC contamination marker
+Hbb-bt	haemoglobin	mouse	Haemoglobin beta adult t chain; RBC contamination marker
+Hbb-bh1	haemoglobin	mouse	Haemoglobin beta embryonic chain 1
+Hbb-bh2	haemoglobin	mouse	Haemoglobin beta embryonic chain 2
+Hbb-y	haemoglobin	mouse	Haemoglobin beta embryonic chain y
+Hba-x	haemoglobin	mouse	Haemoglobin alpha embryonic chain X
