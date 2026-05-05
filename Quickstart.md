@@ -1,6 +1,7 @@
 # AutoPareto: Quickstart
 
-> **Copy-paste your way through for a quick tutorial.** For details on what each step does, see the full [README](README.md).
+> **Copy-paste your way through for a quick tutorial.**
+> For details on what each step does, see the full [README](README.md).
 
 ---
 
