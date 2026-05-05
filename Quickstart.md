@@ -23,6 +23,11 @@ conda activate parti
 > pip install scanpy partipy gseapy anndata pandas numpy matplotlib scipy
 > ```
 
+If using Notebook/Lab, register the environment as a Jupyter kernel
+```bash
+pip install ipykernel
+python -m ipykernel install --user --name parti --display-name "Python (parti)"
+```
 ---
 
 ## 2. Install R dependencies
@@ -139,6 +144,7 @@ save_annotated_data(
 > ```
 > Or follow the steps below to run them individually.
 
+Before running any cells, make sure the notebook is using the `parti` kernel. In Jupyter Notebook/Lab, go to **Kernel → Change Kernel** and select **Python (parti)**. If it doesn't appear, make sure you completed the ipykernel registration step in §1.
 **Load data**
 
 ```python
