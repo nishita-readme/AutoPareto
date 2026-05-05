@@ -45,7 +45,6 @@ Parti_pipeline/
 
 ### R (Stage 1)
 ```r
-```r
 install.packages(c(
   "Seurat",     # 5.3.0
   "Matrix",     # 1.6.5
@@ -58,7 +57,6 @@ BiocManager::install(c(
   "glmGamPoi",  # 1.14.3 — optional but recommended for SCT
   "SeuratDisk"  # 0.0.0.9021
 ))
-```
 ```
 
 ### Python (Stage 2)
