@@ -100,8 +100,8 @@ query <- plot_qc(query, mt_pattern = "^mt-", ribo_pattern = "^Rp[sl]")
 ```
 
 ```r
-ref   <- subset(ref,   nFeature_RNA > 500 & nFeature_RNA < 6000 & pct.mt < 15)
-query <- subset(query, nFeature_RNA > 500 & nFeature_RNA < 6000 & pct.mt < 15)
+ref   <- subset(ref,   nFeature_RNA > 500 & pct.mt < 15)
+query <- subset(query, nFeature_RNA > 500 & pct.mt < 15)
 ```
 
 **Transfer annotations**
@@ -152,7 +152,11 @@ import scanpy as sc
 import pandas as pd
 import partipy as pt
 import sys
-sys.path.append("..")
+
+# Set this to the root of your AutoPareto clone, e.g. "/home/user/AutoPareto"
+REPO_ROOT = "/path/to/AutoPareto"
+
+sys.path.append(REPO_ROOT)
 from scripts.utils import *
 
 counts = pd.read_csv("../data/processed/query_counts.csv", index_col=0)
