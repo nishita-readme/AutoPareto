@@ -67,7 +67,19 @@ data/
 ├── test/raw/      ← query files
 └── ref/raw/       ← reference files
 ```
-
+You can do so manually, or run the following commands:
+```bash
+# Create directories
+mkdir -p data/test/raw data/ref/raw
+ 
+# Download query files (GSE124952)
+wget -P data/test/raw "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE124nnn/GSE124952/suppl/GSE124952_expression_matrix.csv.gz"
+wget -P data/test/raw "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE124nnn/GSE124952/suppl/GSE124952_meta_data.csv.gz"
+ 
+# Download reference files (GSE115746)
+wget -P data/ref/raw "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE115nnn/GSE115746/suppl/GSE115746_exon_counts.csv.gz"
+wget -P data/ref/raw "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE115nnn/GSE115746/suppl/GSE115746_complete_metadata_28706-cells.csv.gz"
+```
 ---
 
 ## 4. Stage 1 — Annotation Transfer (R)
