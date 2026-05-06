@@ -160,8 +160,8 @@ REPO_ROOT = "/path/to/AutoPareto"
 sys.path.append(REPO_ROOT)
 from scripts.utils import *
 
-counts = pd.read_csv("../data/processed/query_counts.csv", index_col=0)
-meta   = pd.read_csv("../data/processed/query_metadata.csv", index_col=0)
+counts = pd.read_csv("../data/query_counts.csv", index_col=0)
+meta   = pd.read_csv("../data/query_metadata.csv", index_col=0)
 adata  = sc.AnnData(X=counts.T, obs=meta)
 ```
 
