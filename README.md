@@ -388,6 +388,7 @@ strict_go_results = run_strict_go_analysis(strict_genes_df, adata, organism="mou
 
 ## Notes
 
-- All intermediate Python utility functions live in `scripts/utils.py`. Import with `from scripts.utils import *` from the notebooks directory.
+- All intermediate Python utility functions live in `scripts/utils.py`. Import with `from scripts.utils import *` from the notebooks directory. For details on any function, run `help(function_name)` in Python.
 - All R utility functions live in `scripts/utils_R.R`. Source with `source("/path/to/scripts/utils_R.R")`.
-- `/path/to/data/accessories/QC_genes.txt` — tab-separated file, first column is gene names to exclude from HVG selection (mitochondrial, ribosomal, sex-linked, etc.).
+- `/path/to/data/accessories/QC_genes.txt` — tab-separated file, first column is gene names to exclude from HVG selection (mitochondrial, ribosomal, sex-linked, etc.). A sample file is provided at `data/accessories/QC_genes.txt`.
+ 
