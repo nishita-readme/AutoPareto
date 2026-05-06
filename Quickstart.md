@@ -86,10 +86,7 @@ wget -P data/ref/raw "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE115nnn/GSE11574
 
 > **Path note:** All file paths below assume your R working directory is `AutoPareto/notebooks/`. If it isn't, update the paths accordingly or run `setwd("path/to/AutoPareto/notebooks")` before proceeding.
 
-> **Shortcut:** You can run all of Stage 1 at once by sourcing the tutorial script:
-> ```r
-> source("scripts/tutorial_stage1.R")
-> ```
+> **Shortcut:** You can run all of Stage 1 by running the tutorial script: scripts/tutorial_stage1.R
 > Or follow the steps below to run them individually.
 
 **Load data**
