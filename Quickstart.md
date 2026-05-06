@@ -72,6 +72,8 @@ data/
 
 ## 4. Stage 1 — Annotation Transfer (R)
 
+> **Path note:** All file paths below assume your R working directory is `AutoPareto/notebooks/`. If it isn't, update the paths accordingly or run `setwd("path/to/AutoPareto/notebooks")` before proceeding.
+
 > **Shortcut:** You can run all of Stage 1 at once by sourcing the tutorial script:
 > ```r
 > source("scripts/tutorial_stage1.R")
@@ -139,6 +141,8 @@ save_annotated_data(
 
 ## 5. Stage 2 — Archetypal Analysis (Python)
 
+> **Path note:** All file paths below assume your notebook is running from `AutoPareto/notebooks/`. If it isn't, you will need to update all `../data/...` paths to match your actual data location. You can check your current working directory with `import os; os.getcwd()`.
+
 > **Shortcut:** You can run all of Stage 2 interactively by opening the tutorial notebook:
 > ```
 > notebooks/tutorial_stage2.ipynb
@@ -146,6 +150,7 @@ save_annotated_data(
 > Or follow the steps below to run them individually.
 
 Before running any cells, make sure the notebook is using the `parti` kernel. In Jupyter Notebook/Lab, go to **Kernel → Change Kernel** and select **Python (parti)**. If it doesn't appear, make sure you completed the ipykernel registration step in §1.
+
 **Load data**
 
 ```python
@@ -165,7 +170,7 @@ meta   = pd.read_csv("../data/query_metadata.csv", index_col=0)
 adata  = sc.AnnData(X=counts.T, obs=meta)
 ```
 
-**Verify that there are raw integer counts in adata.Xs**
+**Verify that there are raw integer counts in adata.X**
 
 ```python
 check_raw_integers_in_adataX(adata)
