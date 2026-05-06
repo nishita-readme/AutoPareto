@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/figures/logo_final.svg" width="400"/>
+</p>
+
 # AutoPareto: Quickstart
 
 > **Copy-paste your way through for a quick tutorial.**
