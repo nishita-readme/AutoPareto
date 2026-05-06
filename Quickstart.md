@@ -130,8 +130,8 @@ query <- subset(query, subset = predicted_subclass == "L2/3 IT")
 ```r
 save_annotated_data(
   seu                = query,
-  counts_output_file = "data/processed/query_counts.csv",
-  meta_output_file   = "data/processed/query_metadata.csv"
+  counts_output_file = "data/query_counts.csv",
+  meta_output_file   = "data/query_metadata.csv"
 )
 ```
 
