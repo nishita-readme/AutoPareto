@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/logo.svg" width="400"/>
+  <img src="assets/figures/logo.svg" width="400"/>
 </p>
 
 # AutoPareto
