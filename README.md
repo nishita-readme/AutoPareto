@@ -30,6 +30,9 @@ Raw Counts (query + reference)
 ```
 Parti_pipeline/           
 ├── environment/            # Conda/pip environment files
+├── data/
+│   └── accessories
+|        └──QC_genes.txt           # Example QC-associated gene list 
 ├── notebooks/
 │   └── tutorial_stage1.R          # R Commands for annotation transfer
 |   ├── tutorial_stage2.ipynb      # Main python analysis notebook (Stage 2)
