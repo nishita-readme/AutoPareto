@@ -171,7 +171,7 @@ These two files are the inputs to Stage 2.
 | `preprocess_and_run_transferanchor(query, reference, ...)` | Full preprocessing + anchor-based label transfer |
 | `save_annotated_data(seu, counts_output_file, meta_output_file)` | Export counts and metadata as CSVs for Python |
 
-## Stage 2 — Archetypal Analysis (Python)
+## Stage 2 — Archetypal Analysis (Python Notebook)
 
 **Notebook:** `notebooks/tutorial.ipynb`
 
