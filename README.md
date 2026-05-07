@@ -48,8 +48,15 @@ Parti_pipeline/
 ```
 
 ---
+## Clone
 
-## Dependencies
+```bash
+git clone https://github.com/nishita-readme/AutoPareto.git
+cd AutoPareto
+```
+
+
+## Setup and Dependencies
 
 ### R (Stage 1)
 ```r
