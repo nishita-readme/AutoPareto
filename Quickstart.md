@@ -107,6 +107,12 @@ query <- load_seurat(
   meta_path   = "data/test/raw/GSE124952_meta_data.csv.gz"
 )
 ```
+**For the sake of this tutorial, subset the datasets:**
+```r
+ref <- subset(ref, subset = ref$source_name == "Primary Visual Cortex (VISp)")
+query <- subset(query, subset =((query$DevStage == "Adult") & (query$treatment == "Saline")))
+```
+
 
 **QC**
 
